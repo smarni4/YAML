@@ -1,0 +1,184 @@
+# Introduction to the YAML #    Officail website - https://yaml.org/
+
+# It is a light weight human readable date-serialization language .It is designed to make the format easy to read while including advanced features.
+
+# YAML - YAML Ain't MArkup LAnguage 
+
+# It is similar to XML and JSON files but uses a more minimalist syntax.
+
+# YAML files are created with extensions ".yaml" or ".yml".
+
+# YAMl  is an superset of JSON.
+
+# It is very easy and simple for representing complex mapping.
+
+# It helps in writing config files that are readable by every human and it also helpful in date exchange purposes.
+
+# YAML is case sensitive.
+
+# Three --- mark indicates the system that this is the starting of the yaml file.
+
+# Three ... mark indicates the system that this is the end of the yaml file.
+
+#########################
+
+# Basic YAML file:
+
+firstname: Srikanth
+lastname: Marni
+applications:
+  - accounts
+  - cards
+  - loans
+
+######################### 
+
+# In YAML file using tab is not recommended.
+
+# In YAML value given to the key is known as scalar. #### key: value (scalar) #### Space is mandatory after colon.
+
+# In YAML we have to enclose the strings consisting special characteres inside the quotes in order to consider them as strings. If we want to write the true or false, yes or no 
+
+ -----  in the format of string we have to enclose them inside the quotes.
+
+-------------------------------------- STRINGS -------------------------------------
+
+# To represent the strings in multiple lines we can use the ">" sign known as folded style, and to represent the new lines as the new lines even the string is continued in that 
+new line we can use "|" sign known as literal style.
+
+ -------------- >           key: >       (CLIP MODE)
+			     #####
+			     #####                  
+			     #####
+		
+		-----> In the above one, the three lines can be considered as one single line and empty lines given by us at the end of the string are not considered. Only one 
+		       empty line will present by default.
+
+--------------- >           key: |        (CLIP MODE)
+			     #####
+			     #####
+			     #####
+		
+		------> In the above one, the three lines are considered as exact three lines as I mentioned above and empty lines given by us at the end of the string are not 
+ 			considered. Only the line feed i.e., one empty line will present by default.
+
+--------------- >           key: |- (or) >-     (STRIP MODE)
+			     #####
+			     #####
+			     #####
+
+		------> In the above one, no empty line will present at end of the string and empty lines given by us will also not present at the end.
+
+--------------- >	    key: |+ (or) >+      (KEEP MODE)
+			     #####
+			     #####
+			     #####
+
+		------->  In the above one, both empty lines given by us and default empty line will present at the end of the string.
+
+###########################################################################################################################################################
+
+#  In YAML, we can comment using # before the line that we want to comment. To comment multiple lines at a same time, we have to use # at the begining of every line that we want 
+   to comment.
+
+# YAML automatically detects the data types of values and we can also determine the data types manually by entering the data type before the value as shown
+	 
+		------ " !![type] value " --------
+
+################################### Sequences/Collections ###################################################################################################
+
+# In YAML, we can define multiple scalars to the key like an array or list. In yaml we can define them using two methods named as block and flow method.
+
+# Block style :   key:
+		   - value
+		   - value
+
+# Flow style :  key: [value, value, value]
+
+# we can also embeded the sequences as many as we want such as
+	
+	key:
+	 - key1:
+	    - value
+	    - value
+	 - key2:
+	    - value
+	    - value
+
+###################################### Dictionaries/Mappings ###################################################################################################
+
+# In YAML we can group a set of key-value pairs under one sub group known as dictionary. We can do that in a format as shown
+
+key:
+  -  dict1:
+       - key: value
+  -  dict2:
+       - key: value
+       - key: value 
+
+# In dictionary all the vlaues should follow same identation.
+
+################################## Complex keys & Values #####################################################################
+
+# In YAML, we can write the keys in mutiple lines which are known as complex keys. The format to write the complex keys is
+
+------->        ? This is
+		  multiple line
+		  key
+
+		: This is the scalar
+
+# We can also assign the multiple line scalar values to multiple line keys by writing them in an order of sequence as shown
+
+--------->      ? - This
+		  - multiple
+		  - line
+		
+		: - value to "This"
+		  - value to "multiple"
+		  - value to "line"
+
+
+################################### Anchors and Alias ########################################################################
+
+# In YAML, we can refer to the set of key-value pairs by using the anchors and alias method.
+
+# The sequence that you want to use multiple times should be anchored i.e., referring it with  ### "&" ### sign and calling it when ever you want to use it using ### "*" ### sign.
+
+# In anchors and alias we should not use special characters such as  " [ ] { } , " as they have special meaning in YAML.
+
+# Sample format of anchor and alias is as shown below
+	
+--------->    definations:
+		days(dict):
+		  - weekday(sequence): &working # anchor
+		      wakeup: 6:00 AM
+		      activities:
+			- workout
+			- work
+			- meetings
+			- sleep
+		      sleeptime: 9:00 PM
+		  - weekend(sequence): &holiday # anchor
+		      wakeup: 9:00 AM
+		      activities:
+			- workout
+			- playing
+			- friends
+			- sleep
+		      sleeptime: 12:00 AM
+	     
+		
+	      schedules:
+		days(dict):
+		  weekdays(sequence):
+		    - monday: *working # alias
+		    - tuesday: *working
+		    - wednesday: *working
+		    - thursday: *working
+		    - friday: *working
+		 weekends(sequence):
+		    - saturday: *holiday # alias
+		    - sunday: *holiday # alias
+
+########################################################################################################################################
