@@ -139,7 +139,7 @@ key:
 		  - value to "line"
 
 
-################################### Anchors and Alias ########################################################################
+################################### Anchors and Alias and overriding  ########################################################################
 
 # In YAML, we can refer to the set of key-value pairs by using the anchors and alias method.
 
@@ -176,9 +176,18 @@ key:
 		    - tuesday: *working
 		    - wednesday: *working
 		    - thursday: *working
-		    - friday: *working
+		    - friday:        # overriding
+			<<: *working
+			activities:
+			  - workout
+			  - work
+			  - meetings
+			  - netflix
+			  - sleep
+			sleeptime: 12:00 AM
 		 weekends(sequence):
 		    - saturday: *holiday # alias
-		    - sunday: *holiday # alias
-
+		    - sunday:
+			<<:  *holiday # alias
+			sleeptime: 10:00 PM
 ########################################################################################################################################
