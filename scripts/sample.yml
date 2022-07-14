@@ -20,7 +20,7 @@ strings-literal: |    # literal style
 
 definations:
   days(dict):
-    - weekday(sequence): &working # anchor
+    - weekday(sequence): &working         # anchor
         wakeup: 6:00 AM
         activities:
           - workout
@@ -28,7 +28,7 @@ definations:
           - meetings
           - sleep
         sleeptime: 9:00 PM
-    - weekend(sequence): &holiday # anchor
+    - weekend(sequence): &holiday         # anchor
         wakeup: 9:00 AM
         activities:
           - workout
@@ -40,21 +40,20 @@ definations:
 schedules:
   days(dict):
     weekdays(sequence):
-      - monday: *working # alias
+      - monday: *working                  # alias
       - tuesday: *working
       - wednesday: *working
       - thursday: *working
-      - friday:         # overrinding
-          <<: *working
-          activities:
-            - workout
-            - work
-            - meetings
-            - netflix
-            - sleep
-          sleeptime: 12:00 AM
+      - friday:                           # overrinding
+        <<: *working
+        activities:
+          - workout            - work
+          - meetings
+          - netflix
+          - sleep
+        sleeptime: 12:00 AM
     weekends(sequence):
-      - saturday: *holiday # alias
+      - saturday: *holiday               # alias
       - sunday:
-          <<: *holiday # overrinding
+          <<: *holiday                   # overrinding
           sleeptime: 10:00 PM

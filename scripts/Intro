@@ -8,7 +8,7 @@
 
 # YAML files are created with extensions ".yaml" or ".yml".
 
-# YAMl  is an superset of JSON.
+# YAML is an superset of JSON.
 
 # It is very easy and simple for representing complex mapping.
 
@@ -20,7 +20,9 @@
 
 # Three ... mark indicates the system that this is the end of the yaml file.
 
-#########################
+# YAMLLINT is the default checker to check the errors and warnings in the yaml file.
+
+################################################################################################
 
 # Basic YAML file:
 
@@ -31,7 +33,7 @@ applications:
   - cards
   - loans
 
-######################### 
+##################################################################################################
 
 # In YAML file using tab is not recommended.
 
@@ -41,7 +43,7 @@ applications:
 
  -----  in the format of string we have to enclose them inside the quotes.
 
--------------------------------------- STRINGS -------------------------------------
+################################## STRINGS ########################################################
 
 # To represent the strings in multiple lines we can use the ">" sign known as folded style, and to represent the new lines as the new lines even the string is continued in that 
 new line we can use "|" sign known as literal style.
@@ -51,32 +53,34 @@ new line we can use "|" sign known as literal style.
 			     #####                  
 			     #####
 		
-		-----> In the above one, the three lines can be considered as one single line and empty lines given by us at the end of the string are not considered. Only one 
-		       empty line will present by default.
+----------------> In the above one, the three lines can be considered as one single line and empty lines given by us at the end of the string are not considered. Only one 
+		  empty line will present by default.
 
 --------------- >           key: |        (CLIP MODE)
 			     #####
 			     #####
 			     #####
 		
-		------> In the above one, the three lines are considered as exact three lines as I mentioned above and empty lines given by us at the end of the string are not 
- 			considered. Only the line feed i.e., one empty line will present by default.
+----------------> In the above one, the three lines are considered as exact three lines as I mentioned above and empty lines given by us at the end of the string are not 
+       		  considered. Only the line feed i.e., one empty line will present by default.
 
 --------------- >           key: |- (or) >-     (STRIP MODE)
 			     #####
 			     #####
 			     #####
 
-		------> In the above one, no empty line will present at end of the string and empty lines given by us will also not present at the end.
+----------------> In the above one, no empty line will present at end of the string and empty lines given by us will also not present at the end.
 
 --------------- >	    key: |+ (or) >+      (KEEP MODE)
 			     #####
 			     #####
 			     #####
 
-		------->  In the above one, both empty lines given by us and default empty line will present at the end of the string.
+---------------->  In the above one, both empty lines given by us and default empty line will present at the end of the string.
+
 
 ###########################################################################################################################################################
+
 
 #  In YAML, we can comment using # before the line that we want to comment. To comment multiple lines at a same time, we have to use # at the begining of every line that we want 
    to comment.
@@ -85,7 +89,9 @@ new line we can use "|" sign known as literal style.
 	 
 		------ " !![type] value " --------
 
+
 ################################### Sequences/Collections ###################################################################################################
+
 
 # In YAML, we can define multiple scalars to the key like an array or list. In yaml we can define them using two methods named as block and flow method.
 
@@ -190,4 +196,22 @@ key:
 		    - sunday:
 			<<:  *holiday # alias
 			sleeptime: 10:00 PM
-########################################################################################################################################
+
+################################ Multi Document Support ########################################################################################################
+
+# In YAML, we can write mutiple YAML documents in one yaml file by using " ... " sign at the top and bottom of every yaml document.
+
+----->  ...				----
+	###: 				----	
+	  ###    ----> (document 1)       --  
+	  ###                             -- 
+	...				  ----->
+					  -----> YAML file
+	...				  ----->
+	###:				  --
+	  ###    -----> (document 2)      --
+	  ###				  --
+	... 				----
+					----
+
+#################################################################################################################################################################
